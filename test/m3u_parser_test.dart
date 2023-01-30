@@ -10,7 +10,7 @@ void main() {
     final m3uList = await M3uList.loadFromFile('test_resources/test1.m3u',
         options: M3uLoadOptions(wrongItemTitle: wrongItemTitle));
 
-    expect(m3uList.header.attributes.length, 6);
+    expect(m3uList.header?.attributes.length, 6);
     expect(m3uList.items.length, 9);
 
     {
@@ -19,7 +19,7 @@ void main() {
       expect(item.duration, 0);
       expect(item.title, 'BBC World');
       expect(item.attributes.length, 3);
-      expect(item.groupTitle, null);
+      expect(item.groupTitle, '');
       expect(item.link, 'http://server.name/stream/to/video1');
     }
 
@@ -83,10 +83,9 @@ void main() {
     {
       final groupTitles = m3uList.groupTitles;
 
-      expect(groupTitles.length, 3);
+      expect(groupTitles.length, 2);
       expect(groupTitles[0], 'Fav');
-      expect(groupTitles[1], '');
-      expect(groupTitles[2], 'Video');
+      expect(groupTitles[1], 'Video');
     }
   });
 }

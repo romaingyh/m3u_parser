@@ -12,32 +12,34 @@ import 'm3u_load_options.dart';
 class M3uList {
   M3uList._internal();
 
-  M3uLoadOptions _loadOptions;
-  M3uItem _lastItem;
-  String _lastGroupTitle;
+  M3uLoadOptions _loadOptions = M3uLoadOptions();
+  M3uItem? _lastItem;
+  String _lastGroupTitle = '';
 
-  M3uHeader _header;
+  M3uHeader? _header;
   final List<M3uItem> _items = <M3uItem>[];
-  Set<String> _groupTitles;
+  Set<String>? _groupTitles;
 
-  M3uHeader get header => _header;
+  M3uHeader? get header => _header;
+
   UnmodifiableListView<M3uItem> get items => UnmodifiableListView(_items);
+
   UnmodifiableListView<String> get groupTitles {
     _groupTitles ??= _items
-        .where((a) => a.groupTitle != null)
+        .where((a) => a.groupTitle.isNotEmpty)
         .map((a) => a.groupTitle)
         .toSet();
-    return UnmodifiableListView(_groupTitles);
+    return UnmodifiableListView(_groupTitles!);
   }
 
-  static M3uList load(String source, {M3uLoadOptions options}) {
+  static M3uList load(String source, {M3uLoadOptions? options}) {
     final m3uList = M3uList._internal();
     m3uList._load(source, options ?? M3uLoadOptions());
     return m3uList;
   }
 
   static Future<M3uList> loadFromFile(String path,
-      {M3uLoadOptions options}) async {
+      {M3uLoadOptions? options}) async {
     final file = File(path);
     final source = await file.readAsString();
     return load(source, options: options);
@@ -81,7 +83,7 @@ class M3uList {
 
   void _parseLine(String line) {
     if (_lastItem != null) {
-      _items.add(M3uItem.fromItem(_lastItem, line));
+      _items.add(M3uItem.fromItem(_lastItem!, line));
       _lastItem = null;
       return;
     }
@@ -93,7 +95,7 @@ class M3uList {
     line = line.substring(_itemPrefix.length);
 
     final matches =
-        _itemRegex.allMatches(line).map((a) => a[0].trim()).toList();
+        _itemRegex.allMatches(line).map((a) => a[0]!.trim()).toList();
 
     if (matches.length > 1) {
       final attributes =

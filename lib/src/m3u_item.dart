@@ -1,4 +1,4 @@
-import 'package:meta/meta.dart';
+
 
 class M3uItem {
   int duration;
@@ -12,11 +12,11 @@ class M3uItem {
   String link;
 
   M3uItem(
-      {@required this.duration,
-      @required this.title,
-      this.groupTitle,
-      Map<String, String> attributes,
-      this.link})
+      {required this.duration,
+      required this.title,
+      this.groupTitle = '',
+      Map<String, String>? attributes,
+      this.link = ''})
       : attributes = attributes ?? {};
 
   factory M3uItem.fromItem(M3uItem item, String link) => M3uItem(
