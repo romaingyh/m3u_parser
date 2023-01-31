@@ -1,4 +1,4 @@
-import 'package:m3u_parser/m3u_parser.dart';
+import 'package:m3u_parser_nullsafe/m3u_parser.dart';
 
 void main() async {
   final m3uList = await M3uList.loadFromFile('resources/example.m3u');

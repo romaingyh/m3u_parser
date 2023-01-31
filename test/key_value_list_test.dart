@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:m3u_parser/src/text_utils.dart';
+import 'package:m3u_parser_nullsafe/src/text_utils.dart';
 
 void main() {
   test('test1', () {

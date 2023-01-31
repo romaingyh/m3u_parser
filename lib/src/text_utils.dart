@@ -1,4 +1,4 @@
-import 'package:m3u_parser/src/text_utils_string_extension.dart';
+import 'package:m3u_parser_nullsafe/src/text_utils_string_extension.dart';
 
 Map<String, String> getKeyValueList(String input, List<String> separator) {
   var result = <String, String>{};

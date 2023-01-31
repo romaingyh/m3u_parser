@@ -2,10 +2,10 @@ import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:m3u_parser/src/m3u_header.dart';
-import 'package:m3u_parser/src/m3u_item.dart';
-import 'package:m3u_parser/src/text_utils.dart';
-import 'package:m3u_parser/src/text_utils_string_extension.dart';
+import 'package:m3u_parser_nullsafe/src/m3u_header.dart';
+import 'package:m3u_parser_nullsafe/src/m3u_item.dart';
+import 'package:m3u_parser_nullsafe/src/text_utils.dart';
+import 'package:m3u_parser_nullsafe/src/text_utils_string_extension.dart';
 
 import 'm3u_load_options.dart';
 
