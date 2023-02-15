@@ -8,6 +8,9 @@ Map<String, String> getKeyValueList(String input, List<String> separator) {
   }
 
   input = input.trim();
+  if(input.startsWith(',')) {
+    input = input.substring(1);
+  }
 
   var escape = false;
   var quoted = false;

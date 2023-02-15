@@ -68,8 +68,8 @@ class M3uList {
   final _headerPrefix = '#EXTM3U';
   final _itemPrefix = '#EXTINF:';
 
-  final _itemRegex =
-      RegExp(r'^(-?\d+)|( .+=[^,]+)|((?<=[,\d])[^,]+$)', caseSensitive: false);
+  final _itemRegex = RegExp(r'^(-?\d+)|([\s,].+=[^,]+)|((?<=[,\d])[^,]+$)',
+      caseSensitive: false);
 
   void _parseHeader(String line) {
     if (!line.startsWith(_headerPrefix)) {
@@ -93,7 +93,6 @@ class M3uList {
     }
 
     line = line.substring(_itemPrefix.length);
-
     final matches =
         _itemRegex.allMatches(line).map((a) => a[0]!.trim()).toList();
 
