@@ -1,6 +1,6 @@
 name: m3u_parser_nullsafe
 description: m3u parser
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/xxzj990/m3u_parser
 
 environment:

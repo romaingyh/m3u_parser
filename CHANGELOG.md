@@ -1,3 +1,7 @@
+## 1.0.3
+
+- fix attributes lost error
+
 ## 1.0.2
 
 - export
