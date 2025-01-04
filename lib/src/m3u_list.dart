@@ -77,7 +77,7 @@ class M3uList {
   }
 
   void _parseLine(String line) {
-    if (_lastItem != null) {
+    if (_lastItem != null && !line.startsWith('#EXT')) {
       _items.add(M3uItem.fromItem(_lastItem!, line));
       _lastItem = null;
       return;
