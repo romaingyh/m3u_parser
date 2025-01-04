@@ -1,6 +1,5 @@
-import 'package:test/test.dart';
-
 import 'package:m3u_parser_nullsafe/src/text_utils.dart';
+import 'package:test/test.dart';
 
 void main() {
   test('test1', () {
@@ -12,8 +11,7 @@ void main() {
     expect(keyValueList['name'], "Dave O'Connel");
     expect(keyValueList['e-mail'], 'dave@mailinator.com');
     expect(keyValueList['epoch'], '1498158305');
-    expect(keyValueList['other value'],
-        'some arbitrary\" text, with comma = and equals symbol');
+    expect(keyValueList['other value'], 'some arbitrary\" text, with comma = and equals symbol');
   });
 
   test('test2', () {

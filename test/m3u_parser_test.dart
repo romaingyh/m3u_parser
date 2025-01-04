@@ -1,14 +1,13 @@
+import 'package:m3u_parser_nullsafe/m3u_parser_nullsafe.dart';
 import 'package:m3u_parser_nullsafe/src/m3u_load_options.dart';
 import 'package:test/test.dart';
-
-import 'package:m3u_parser_nullsafe/m3u_parser_nullsafe.dart';
 
 void main() {
   test('file1.m3u', () async {
     final wrongItemTitle = 'Empty';
 
-    final m3uList = await M3uList.loadFromFile('test_resources/test1.m3u',
-        options: M3uLoadOptions(wrongItemTitle: wrongItemTitle));
+    final m3uList =
+        await M3uList.loadFromFile('test_resources/test1.m3u', options: M3uLoadOptions(wrongItemTitle: wrongItemTitle));
 
     expect(m3uList.header?.attributes.length, 6);
     expect(m3uList.items.length, 9);

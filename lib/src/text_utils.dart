@@ -3,12 +3,12 @@ import 'package:m3u_parser_nullsafe/src/text_utils_string_extension.dart';
 Map<String, String> getKeyValueList(String input, List<String> separator) {
   var result = <String, String>{};
 
-  if (input.isNullEmptyOrWhitespace) {
+  if (input.isEmptyOrWhitespace) {
     return result;
   }
 
   input = input.trim();
-  if(input.startsWith(',')) {
+  if (input.startsWith(',')) {
     input = input.substring(1);
   }
 
@@ -23,14 +23,8 @@ Map<String, String> getKeyValueList(String input, List<String> separator) {
 
   void addKeyValue(int endIndex) {
     if (delimIndex > startIndex) {
-      var key = input
-          .substring(startIndex, delimIndex)
-          .replaceAll('\\\"', '\"')
-          .replaceAll(regExp, '');
-      var value = input
-          .substring(delimIndex + 1, endIndex)
-          .replaceAll('\\\"', '\"')
-          .replaceAll(regExp, '');
+      var key = input.substring(startIndex, delimIndex).replaceAll('\\\"', '\"').replaceAll(regExp, '');
+      var value = input.substring(delimIndex + 1, endIndex).replaceAll('\\\"', '\"').replaceAll(regExp, '');
 
       result[key] = value;
     }
